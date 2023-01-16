@@ -42,10 +42,14 @@ def analysis_one(book_list):
 
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
-
+    books_genre = list(filter(lambda book: book['genre'] == 'fiction' or 'non-fiction', book_list))
+    top_fifty_genre = max(books_genre, key=lambda book: book['genre'])
+    print(f"The top genre in the top 50's list is {top_fifty_genre['genre']}.")
 
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
+
+
 
 
 # BONUS USER STORIES:
