@@ -44,11 +44,16 @@ def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
     books_genre = list(filter(lambda book: book['genre'] == 'fiction' or 'non-fiction', book_list))
     top_fifty_genre = max(books_genre, key=lambda book: book['genre'])
-    print(f"The top genre in the top 50's list is {top_fifty_genre['genre']}.")
+    times_appeared = list(filter(lambda count: count['genre'] == top_fifty_genre, book_list))
+    print(f"The top genre in the top 50's list is {top_fifty_genre['genre']} with a total of {times_appeared} .")
+    #frequency appears? or use max?
 
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
-
+    highest_frequency_book = list(filter(lambda book: book['name'], book_list))
+    times_appeared = list(filter(lambda count: count['genre'] == highest_frequency_book, book_list))
+    print(f"The book that appears the most in the top 50's list is {highest_frequency_book('name')} and it has appeared {times_appeared} times. ")
+    
 
 
 
