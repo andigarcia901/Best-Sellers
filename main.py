@@ -1,4 +1,5 @@
 from data import data_list
+import statistics
 
 
 def run_analysis(books):
@@ -42,17 +43,17 @@ def analysis_one(book_list):
 
 def analysis_two(book_list):
     print("Analysis of which genre (fiction or non-fiction) has appeared the most in the top 50's list")
-    books_genre = list(filter(lambda book: book['genre'] == 'fiction' or 'non-fiction', book_list))
-    top_fifty_genre = max(books_genre, key=lambda book: book['genre'])
-    times_appeared = list(filter(lambda count: count['genre'] == top_fifty_genre, book_list))
-    print(f"The top genre in the top 50's list is {top_fifty_genre['genre']} with a total of {times_appeared} .")
-    #frequency appears? or use max?
+    books_most = [book['genre'] for book in book_list]
+    top_fifty_genre = statistics.mode(books_most)
+    number_of_entries = len(list((filter(lambda book: book['genre'] == top_fifty_genre, book_list))))
+    print(f"The top genre in the top 50's list is {top_fifty_genre} with a total of {number_of_entries} times.")
 
 def analysis_three(book_list):
     print("Analysis of which book has appeared the most in the top 50's list, and how many times it has appeared")
-    highest_frequency_book = list(filter(lambda book: book['name'], book_list))
-    times_appeared = list(filter(lambda count: count['genre'] == highest_frequency_book, book_list))
-    print(f"The book that appears the most in the top 50's list is {highest_frequency_book('name')} and it has appeared {times_appeared} times. ")
+    books_most = [book['name'] for book in book_list]
+    most_common_book = statistics.mode(books_most)
+    number_of_entries = len(list((filter(lambda book: book['name'] == most_common_book, book_list))))
+    print(f"The book that appears the most in the top 50's list is {most_common_book} and it has appeared {number_of_entries} times. ")
     
 
 
