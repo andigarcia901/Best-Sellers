@@ -63,14 +63,21 @@ def analysis_three(book_list):
 
 def bonus_analysis_one(book_list):
     print("Analysis of which author has shown up on the top 50's list the most (Distinct books only!)")
-
+    author_most = [book['author'] for book in book_list]
+    most_common_book = statistics.mode(author_most)
+    number_of_distinct_books = len(list((filter(lambda book:book['author'] == most_common_book, book_list))))
+    print(f"The author which has shown up on the top 50's list the most is {most_common_book} with a total of {number_of_distinct_books} distinct books.")
 
 def bonus_analysis_two(book_list):
     print("Analysis of the top book for each year, based on the book's user ratings and number of reviews")
 
 
+
+
 def bonus_analysis_three(book_list):
     print("Analysis of which book has appeared the most consecutively on top 50's list")
+ 
 
 
 run_analysis(data_list)
+bonus_analysis_one(data_list)
