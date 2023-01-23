@@ -60,7 +60,6 @@ def analysis_three(book_list):
 
 # BONUS USER STORIES:
 
-
 def bonus_analysis_one(book_list):
     print("Analysis of which author has shown up on the top 50's list the most (Distinct books only!)")
     author_most = [book['author'] for book in book_list]
@@ -70,14 +69,21 @@ def bonus_analysis_one(book_list):
 
 def bonus_analysis_two(book_list):
     print("Analysis of the top book for each year, based on the book's user ratings and number of reviews")
-
-
-
-
+    book_ratings = [book['user_rating'] for book in book_list]
+    book_reviews = [book['number_of_reviews'] for book in book_list]
+    combined_average = statistics.mode(book_ratings and book_reviews)
+    books_most = [book['name'] for book in book_list]
+    most_common_book = statistics.mode(books_most)
+    top_book_per_year = len(list(filter(lambda book: book['user_rating'] and book ['number_of_reviews'] == combined_average, book_list)))
+    print(f"Top book per year based on user ratings and number of reviews: {most_common_book} appearing {top_book_per_year} times.")
+    #Simplify? 
+    
 def bonus_analysis_three(book_list):
     print("Analysis of which book has appeared the most consecutively on top 50's list")
- 
+    
 
 
 run_analysis(data_list)
 bonus_analysis_one(data_list)
+bonus_analysis_two(data_list)
+
